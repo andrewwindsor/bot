@@ -5,10 +5,10 @@ const moment = require("moment");
 require("moment-duration-format");
 const momenttz = require('moment-timezone');
 const MessageAdd = require('./db/message_add.js')
-const welcomeChannelName = "안녕하세요";
-const byeChannelName = "안녕히가세요";
-const welcomeChannelComment = "어서오세요.";
-const byeChannelComment = "안녕히가세요.";
+const welcomeChannelName = "일반";
+const byeChannelName = "일반";
+const welcomeChannelComment = "안녕";
+const byeChannelComment = "잘가";
 
 client.on('ready', () => {
   console.log('켰다.');
@@ -50,8 +50,8 @@ client.on('message', (message) => {
     let img = 'https://cdn.discordapp.com/icons/419671192857739264/6dccc22df4cb0051b50548627f36c09b.webp?size=256';
     var duration = moment.duration(client.uptime).format(" D [일], H [시간], m [분], s [초]");
     embed.setColor('#186de6')
-    embed.setAuthor('server info of 콜라곰 BOT', img)
-    embed.setFooter(`콜라곰 BOT ❤️`)
+    embed.setAuthor('server info of 멸치서버 BOT', img)
+    embed.setFooter(`멸치서버 BOT`)
     embed.addBlankField()
     embed.addField('RAM usage',    `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`, true);
     embed.addField('running time', `${duration}`, true);
@@ -77,11 +77,11 @@ client.on('message', (message) => {
   }
 
   if(message.content == 'embed') {
-    let img = 'https://cdn.discordapp.com/icons/419671192857739264/6dccc22df4cb0051b50548627f36c09b.webp?size=256';
+    let img = 'https://cdn.discordapp.com/attachments/745908028263628830/745908095938592799/1.png';
     let embed = new Discord.RichEmbed()
       .setTitle('타이틀')
       .setURL('http://www.naver.com')
-      .setAuthor('나긋해', img, 'http://www.naver.com')
+      .setAuthor('멸치서버 봇', img, 'http://www.naver.com')
       .setThumbnail(img)
       .addBlankField()
       .addField('Inline field title', 'Some value here')
@@ -91,14 +91,14 @@ client.on('message', (message) => {
       .addField('Inline field title', 'Some value here1\nSome value here2\nSome value here3\n')
       .addBlankField()
       .setTimestamp()
-      .setFooter('나긋해가 만듬', img)
+      .setFooter('멸치서버 봇', img)
 
     message.channel.send(embed)
   } else if(message.content == '!help') {
     let helpImg = 'https://images-ext-1.discordapp.net/external/RyofVqSAVAi0H9-1yK6M8NGy2grU5TWZkLadG-rwqk0/https/i.imgur.com/EZRAPxR.png';
     let commandList = [
       {name: '!help', desc: 'help'},
-      {name: 'ping', desc: '현재 핑 상태'},
+      {name: 'test', desc: '봇 작동여부확인'},
       {name: 'embed', desc: 'embed 예제1'},
       {name: '!전체공지', desc: 'dm으로 전체 공지 보내기'},
       {name: '!전체공지2', desc: 'dm으로 전체 embed 형식으로 공지 보내기'},
@@ -108,9 +108,9 @@ client.on('message', (message) => {
     ];
     let commandStr = '';
     let embed = new Discord.RichEmbed()
-      .setAuthor('Help of 콜라곰 BOT', helpImg)
+      .setAuthor('Help of 멸치서버 BOT', helpImg)
       .setColor('#186de6')
-      .setFooter(`콜라곰 BOT ❤️`)
+      .setFooter(`멸치서버 BOT`)
       .setTimestamp()
     
     commandList.forEach(x => {
@@ -152,7 +152,7 @@ client.on('message', (message) => {
       let embed = new Discord.RichEmbed()
         .setAuthor('공지 of 콜라곰 BOT')
         .setColor('#186de6')
-        .setFooter(`콜라곰 BOT ❤️`)
+        .setFooter(`멸치서버 BOT`)
         .setTimestamp()
   
       embed.addField('공지: ', contents);
@@ -192,7 +192,7 @@ client.on('message', (message) => {
     if(isNum && (clearLine <= 0 || 100 < clearLine)) {
       message.channel.send("1부터 100까지의 숫자만 입력해주세요.")
       return;
-    } else if(!isNum) { // c @나긋해 3
+    } else if(!isNum) { // c @andrewwindsor 3
       if(message.content.split('<@').length == 2) {
         if(isNaN(message.content.split(' ')[2])) return;
 
